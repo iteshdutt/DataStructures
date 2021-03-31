@@ -1,0 +1,23 @@
+func reverseString(_ newstr: Any) {
+  if (!(newstr is String) || (newstr as? String)?.isEmpty ?? true) {
+    print("Function called")
+    return
+  }
+  let str = newstr as! String
+  // let array = Array(str)
+  // print(array)
+  var reversedArray: Array = [String]()
+
+  for i in (0..<str.count).reversed() {
+    // This line is required else it will give compiler error
+    let index = str.index(str.startIndex, offsetBy: i)
+    let charString = str[index]
+    reversedArray.append(String(charString))
+  }
+
+  let reversedString = reversedArray.joined()
+  print(reversedString)
+
+}
+
+reverseString("itesh")
