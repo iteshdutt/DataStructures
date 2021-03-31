@@ -1,0 +1,73 @@
+class MyArray {
+  var length: Int = 0;
+  var data: [Int: String] = [Int: String]();
+  
+  // init {
+  //   return super.init();
+  // }
+
+  func get(_ index: Int) -> String {
+    return data[index]!
+  }
+
+  func push(_ item: String) {
+    self.data[self.length] = item;
+    self.length += 1
+    print(data)
+  }
+
+  func pop() {
+    // let lastItem = self.data[self.length-1];
+    data[self.length-1] = nil
+    self.length -= 1
+    print(data)
+  }
+
+  func delete(_ index: Int) {
+    shiftItems(index)
+    self.length -= 1;
+    print(data)
+  }
+
+  func shiftItems(_ index: Int) {
+    for i in index ..< self.length-1 {
+       data[i] = data[i+1];
+    }
+    data[self.length-1] = nil;
+  }
+}
+
+// var newArray = MyArray()
+// newArray.push("Hi")
+// newArray.push("You")
+// newArray.push("Now")
+// print(newArray.delete(0));
+// newArray.push("!")
+// newArray.push("A")
+// newArray.push("B")
+
+
+func reverseString(_ newstr: Any) {
+  if (!(newstr is String) || (newstr as? String)?.isEmpty ?? true) {
+    print("Function called")
+    return
+  }
+  let str = newstr as! String
+  // let array = Array(str)
+  // print(array)
+  var reversedArray: Array = [String]()
+
+  for i in (0..<str.count).reversed() {
+    let index = str.index(str.startIndex, offsetBy: i)
+    let charString = str[index]
+    reversedArray.append(String(charString))
+  }
+  // for item in array.reversed() {
+  //   reversedArray.append(String(item))
+  // }
+  let reversedString = reversedArray.joined()
+  print(reversedString)
+
+}
+
+reverseString("itesh")
